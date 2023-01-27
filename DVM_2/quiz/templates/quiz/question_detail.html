@@ -1,0 +1,6 @@
+{% extends "quiz/base.html" %}
+{% block content %}
+    <h1> Quiz: {{ quiz.title }}</h1>
+    <br>
+    <p>To create new questions, click <a href="{% url 'add-question' %}">Here</a></p>
+{% endblock %}

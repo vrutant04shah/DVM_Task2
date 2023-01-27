@@ -1,0 +1,15 @@
+{% extends 'quiz/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <fieldset class="form-legend">
+            <legend class="border-bottom mb-4">Question</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <a href="{% url 'add-question' quiz_id %}"><button class="btn btn-outline-info"> Save and New Question </button></a>
+            <button class="btn btn-outline-info" type="submit"> Submit </button>
+        </div>
+    </form>
+{% endblock %}

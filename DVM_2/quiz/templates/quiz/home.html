@@ -1,0 +1,29 @@
+{% extends "quiz/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <center><a href="{% url 'new-quiz' %}"> Create New Quiz </a></center>
+    {% endif %}
+    <br>
+    {% if user.is_authenticated %}
+        {% for quiz in quizzes %}
+            <article class="media content-section">
+              <img class="rounded-circle article-img" src="{{ quiz.author.profile.image.url }}">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="{% url 'quiz-detail' quiz.id %}">{{ quiz.title }}</a>
+                </div>
+                <p>QM : {{ quiz.author }}</p>
+              </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="article-metadata">
+            <center>
+                <h1> Welcome to Quizzer!!</h1>
+                <p>Quizzer is an online platform to conduct and give quizzes.<br>Please sign up or login to access the quizzes.</p>
+                    <a href="/login"><small>LogIn</small></a><br>
+                    <a href="/register"><small>Sign Up</small></a>
+            </center>
+        </div>
+    {% endif %}
+{% endblock content %}
